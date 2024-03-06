@@ -4,9 +4,17 @@ Docker image for Omeka S.
 
 Ready-to-run docker compose file bundling Omeka S, Maria DB and Nginx.
 
+## Prerequisites
+
+Install either Docker Engine (Linux only) or Docker Desktop (all platforms).
+
 ## Usage
 
 ```shell
+# Open a terminal, clone this repository.
+git clone git@github.com:sepastian/omeka-s-docker.git
+cd omeka-s-docker/
+
 # Build Omeka S docker image.
 docker compose build
 
