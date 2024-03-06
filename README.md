@@ -21,4 +21,4 @@ tr -dc A-Za-z0-9 </dev/urandom | head -c 12 > secrets/mariadb_root_password
 docker compose up
 ```
 
-Navigate to localhost:8080 to finish installation.
+Navigate to http://localhost:8080 to setup Omeka S and finish the installation.
