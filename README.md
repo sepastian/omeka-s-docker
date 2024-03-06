@@ -1,6 +1,8 @@
 # Omeka S Docker
 
-Omeka S Docker containers.
+Docker image for Omeka S.
+
+Ready-to-run docker compose file bundling Omeka S, Maria DB and Nginx.
 
 ## Usage
 
