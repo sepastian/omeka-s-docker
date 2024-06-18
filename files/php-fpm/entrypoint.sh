@@ -8,7 +8,4 @@ sed -i \
     -e "s|host.*|host=\"$MARIADB_HOST\"|" \
     /var/www/html/config/database.ini
 
-cat /var/www/html/config/database.ini
-
 php-fpm
-
