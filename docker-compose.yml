@@ -7,12 +7,27 @@ services:
     volumes:
       - www_dir:/var/www/html
       - ./files/nginx/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./modules:/var/www/html/modules
+      # Mount themes as separate subfolder, to keep default theme in /themes.
+      - ./themes/cozy:/var/www/html/themes/cozy
+      - ./themes/foundation:/var/www/html/themes/foundation
+      - ./themes/centerrow:/var/www/html/themes/centerrow
+    labels:
+      - "traefik.http.routers.omeka.rule=Host(`dighum01.phil.uni-passau.de`)"
+      - "traefik.http.routers.omeka.tls.certresolver=le"
+      - "traefik.http.routers.omeka.entrypoints=web,websecure"
+      - "traefik.port=80"
   php-fpm:
     hostname: php-fpm
     image: sepastian/omeka-s
     build: .
     volumes:
       - www_dir:/var/www/html
+      - ./modules:/var/www/html/modules
+      # Mount themes as separate subfolder, to keep default theme in /themes.
+      - ./themes/cozy:/var/www/html/themes/cozy
+      - ./themes/foundation:/var/www/html/themes/foundation
+      - ./themes/centerrow:/var/www/html/themes/centerrow
     environment:
       MARIADB_DATABASE: omeka
       MARIADB_USER: omeka
@@ -38,4 +53,7 @@ secrets:
     file: ./secrets/mariadb_root_password
   mariadb_password:
     file: ./secrets/mariadb_password
-    
+networks:
+  default:
+    external:
+      name: traefik
