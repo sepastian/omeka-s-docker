@@ -1,6 +1,6 @@
 FROM php:8-fpm-alpine
 
-ENV OMEKA_VERSION=4.0.4
+ENV OMEKA_VERSION=4.1.1
 
 WORKDIR /var/www/html
 RUN apk add --update-cache --virtual build-dependencies \
@@ -17,7 +17,8 @@ RUN apk add \
     imagemagick \
     sed \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install intl pdo_mysql
+    && docker-php-ext-install intl pdo_mysql \
+    && docker-php-ext-install imagick
 
 # Make sure /var/www/html/files is owned by www-data.
 # Run as www-data.
