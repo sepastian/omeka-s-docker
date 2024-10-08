@@ -9,16 +9,19 @@ RUN apk add --update-cache --virtual build-dependencies \
     && wget https://github.com/omeka/omeka-s/releases/download/v${OMEKA_VERSION}/omeka-s-${OMEKA_VERSION}.zip \
     && unzip omeka-s-${OMEKA_VERSION}.zip \
     && mv omeka-s/* . \
-    && rm omeka-s-${OMEKA_VERSION}.zip \
     && apk del build-dependencies
 
 RUN apk add \
+    freetype-dev \
+    jpeg-dev \
     icu-dev \
-    imagemagick \
+    imagemagick-dev \
+    imagemagick-jpeg \
+    libpng-dev \
+    libjpeg-turbo-dev \
     sed \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install intl pdo_mysql \
-    && docker-php-ext-install imagick
+    && docker-php-ext-install intl pdo_mysql
 
 # Make sure /var/www/html/files is owned by www-data.
 # Run as www-data.
