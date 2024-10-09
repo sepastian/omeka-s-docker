@@ -1,0 +1,7 @@
+services:
+  nginx:
+    labels:
+      - "traefik.http.routers.omeka.rule=Host(`exhibition.com`)"
+      - "traefik.http.routers.omeka.tls.certresolver=le"
+      - "traefik.http.routers.omeka.entrypoints=web,websecure"
+      - "traefik.port=80"
