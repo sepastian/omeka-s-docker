@@ -6,10 +6,10 @@
 
 ### Added
 
-	* Omeka S v4.1.1
-	* `.env` files for database credentials
-	* Using `OMEKA_DB_CONNECTION_URL` instead of `config/database.ini`; see https://github.com/omeka/omeka-s/pull/1789
+* Omeka S v4.1.1
+* `.env` files instead of Docker secrets for database credentials
+* `OMEKA_DB_CONNECTION_URL` instead of `config/database.ini`; see https://github.com/omeka/omeka-s/pull/1789
 
 ### Changed
 
-	* Removed docker secrets
+* Removed docker secrets
