@@ -7,13 +7,13 @@ services:
     volumes:
       - www_dir:/var/www/html
       - ./files/nginx/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-  php-fpm:
-    hostname: php-fpm
-    image: sepastian/omeka-s
+  omeka-s:
+    hostname: omeka-s
+    image: ghcr.io/sepastian/omeka-s-docker:latest
     build: .
     volumes:
       - www_dir:/var/www/html
-      - ./files/php-fpm/var/www/html/config/local.config.php:/var/www/html/config/local.config.php
+      - ./files/omeka-s/var/www/html/config/local.config.php:/var/www/html/config/local.config.php
     environment:
       - OMEKA_DB_CONNECTION_URL
   mariadb:
