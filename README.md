@@ -1,4 +1,4 @@
-# Omeka S Docker
+# 🏛 Omeka S Docker
 
 Docker image for Omeka S.
 
@@ -44,7 +44,7 @@ docker compose up
 
 Navigate to http://localhost:8080 to setup Omeka S and finish the installation.
 
-# Docker
+# 🐋 Docker
 
 If present during `docker compose up`, a compose override file names `compose.override.yml` will be merged with `compose.yml`.
 
