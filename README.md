@@ -40,8 +40,20 @@ docker compose build
 
 # Start containers.
 docker compose up
-
-# Visit http://localhost:8080 to install Omeka S.
 ```
 
 Navigate to http://localhost:8080 to setup Omeka S and finish the installation.
+
+# Docker
+
+If present during `docker compose up`, a compose override file names `compose.override.yml` will be merged with `compose.yml`.
+
+This can be used to override settings or specify additional attributes.
+
+The sample file `compose.override.yml.sample` shows how to configure Traefik in a virtual hosting environment.
+To get started, copy that file to `compose.override.yml` and (re)start Docker containers.
+
+```shell
+cp compose.override.yml.sample compose.override.yml
+docker compose up
+```
