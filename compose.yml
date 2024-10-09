@@ -7,49 +7,23 @@ services:
     volumes:
       - www_dir:/var/www/html
       - ./files/nginx/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-      - ./modules:/var/www/html/modules
-      # Mount themes as separate subfolder, to keep default theme in /themes.
-      - ./themes/cozy:/var/www/html/themes/cozy
-      - ./themes/foundation:/var/www/html/themes/foundation
-      - ./themes/centerrow:/var/www/html/themes/centerrow
-    labels:
-      - "traefik.http.routers.omeka.rule=Host(`dighum01.phil.uni-passau.de`)"
-      - "traefik.http.routers.omeka.tls.certresolver=le"
-      - "traefik.http.routers.omeka.entrypoints=web,websecure"
-      - "traefik.port=80"
   php-fpm:
     hostname: php-fpm
     image: sepastian/omeka-s
     build: .
     volumes:
       - www_dir:/var/www/html
-      - ./modules:/var/www/html/modules
-      # Mount themes as separate subfolder, to keep default theme in /themes.
-      - ./themes/cozy:/var/www/html/themes/cozy
-      - ./themes/foundation:/var/www/html/themes/foundation
-      - ./themes/centerrow:/var/www/html/themes/centerrow
+      - ./files/php-fpm/var/www/html/config/local.config.php:/var/www/html/config/local.config.php
     environment:
-      MARIADB_DATABASE: omeka
-      MARIADB_USER: omeka
-      MARIADB_PASSWORD_FILE: /run/secrets/mariadb_password
-      MARIADB_HOST: mariadb
-    secrets:
-      - mariadb_password
+      - OMEKA_DB_CONNECTION_URL
   mariadb:
     hostname: mariadb
     image: mariadb:lts
     environment:
-      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/mariadb_root_password
-      MARIADB_PASSWORD_FILE: /run/secrets/mariadb_password
-      MARIADB_DATABASE: omeka
-      MARIADB_USER: omeka
-    secrets:
-      - mariadb_root_password
-      - mariadb_password
+      - MARIADB_DATABASE
+      - MARIADB_USER
+      - MARIADB_HOST
+      - MARIADB_ROOT_PASSWORD
+      - MARIADB_PASSWORD
 volumes:
   www_dir:
-secrets:
-  mariadb_root_password:
-    file: ./secrets/mariadb_root_password
-  mariadb_password:
-    file: ./secrets/mariadb_password
