@@ -54,3 +54,30 @@ To get started, copy that file to `compose.override.yml` and (re)start Docker co
 cp compose.override.yml.sample compose.override.yml
 docker compose up
 ```
+
+## Backup
+
+## Restore
+
+```shell
+# Prune existing containers
+docker compose rm -sf
+
+# (Re)create containers
+docker compose up -d
+
+# Restore database backup;
+# obtain MariaDB root password from .env
+docker exec -i omeka-s-docker-hamm-mariadb-1 \
+  sh -c 'exec mariadb -uroot -p"<secret>"' \
+  < backup/mariadb_dump.sql
+
+# Copy backup data into docker volume
+for d in files themes modules
+do
+  docker compose cp backup/"${d}" omeka-s:/var/www/html
+done
+
+# Update ownership of /var/www/html
+docker compose exec --user root omeka-s chown -R www-data:www-data /var/www/html
+```
