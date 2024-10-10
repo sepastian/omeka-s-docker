@@ -9,7 +9,8 @@ RUN apk add --update-cache --virtual build-dependencies \
     && wget https://github.com/omeka/omeka-s/releases/download/v${OMEKA_VERSION}/omeka-s-${OMEKA_VERSION}.zip \
     && unzip omeka-s-${OMEKA_VERSION}.zip \
     && mv omeka-s/* . \
-    && apk del build-dependencies
+    && apk del build-dependencies \
+    && rm -rf omeka-s*
 
 RUN apk add \
     freetype-dev \
