@@ -33,6 +33,8 @@ _*) If you prefer, create the `.env` file manually, see `.env.sample` for an exa
 
 # 🐳 Docker
 
+## Overrides
+
 If present during `docker compose up`, a compose override file names `compose.override.yml` will be merged with `compose.yml`.
 
 This can be used to override settings or specify additional attributes.
@@ -45,13 +47,46 @@ cp compose.override.yml.sample compose.override.yml
 docker compose up
 ```
 
-## Backup
+## Backup & Restore
 
-## Restore
+> The Omeka S documentation does not contain information on how to backup and restore. Use the following information at your own risk.
+
+### Backup
+
+To create a backup,
+  * create a database dump
+  * make copies of these folders
+    * `/var/www/html/files`
+    * `/var/www/html/modules`
+    * `/var/www/html/themes`
 
 ```shell
-# Prune existing containers
-docker compose rm -sf
+cd omeka-s-docker/
+mkdir backup/
+cd backup/
+
+# Dump the database to a file;
+# obtain the MariaDB root password from the .env file 
+docker compose exec mariadb mariadb-dump --all-databases -uroot -p"7VDNpz4HusJO" > mariadb_dump.sql
+
+# Copy required data
+for d in files modules themes
+do
+  docker compose cp php-fpm:/var/www/html/"${d}" .
+done
+```
+
+### Restore
+
+The `backup/` folder now contains a complete backup.
+It is recommended to create backups in regular intervals, for example through cron.
+Individual backups should be compressed and rotated, for example using logrotate.
+
+To restore the backup created above:
+
+```shell
+cd omeka-s-docker/backup/
+
 
 # (Re)create containers
 docker compose up -d
@@ -71,3 +106,31 @@ done
 # Update ownership of /var/www/html
 docker compose exec --user root omeka-s chown -R www-data:www-data /var/www/html
 ```
+
+### Purge
+
+If there is an existing Omeka S installation with (running) containers and volumes,
+it may interfere with the backup you are trying to restore.
+The following snippet shows how to **completely delete** an existing instance.
+
+<font color="#ff0000">CONTINUE AT YOUR OWN RISK!</font>
+
+```shell
+# WARNING
+# THE FOLLOWING COMMANDS WILL DESTROY YOUR EXISTING OMEKA S INSTANCE!
+# YOU HAVE BEEN WARNED!
+
+cd omeka-s-docker/
+
+# Prune existing containers
+docker compose rm -sf
+
+# List Docker volumes
+docker volumes ls
+
+# Delete container containing data
+# (Your volume may have a slightly different name.)
+docker volume rm omeka-s-docker-hamm_www_dir
+```
+
+Now restore the backup as described above, see [Restore](#restore).
