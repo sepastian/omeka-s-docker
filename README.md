@@ -105,6 +105,10 @@ done
 
 # Update ownership of /var/www/html
 docker compose exec --user root omeka-s chown -R www-data:www-data /var/www/html
+
+# If the version of Omeka S between the old and new installations increased,
+# running a database migration may be required.
+# Visit your-exhibition.com/admin and click the `Update Database` button.
 ```
 
 ### Purge
