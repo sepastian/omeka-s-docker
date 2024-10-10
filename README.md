@@ -31,7 +31,7 @@ Navigate to http://localhost:8080 to setup Omeka S and finish the installation.
 
 _*) If you prefer, create the `.env` file manually, see `.env.sample` for an example. Passwords are required during backup and restore._
 
-# 🐋 Docker
+# 🐳 Docker
 
 If present during `docker compose up`, a compose override file names `compose.override.yml` will be merged with `compose.yml`.
 
