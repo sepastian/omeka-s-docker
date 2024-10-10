@@ -1,4 +1,4 @@
-# 🏛 Omeka S Docker
+# Omeka S 🏢 ✕ 🐳 Docker
 
 Docker image for Omeka S.
 
