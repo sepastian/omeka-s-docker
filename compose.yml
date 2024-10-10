@@ -18,7 +18,7 @@ services:
       # Enable logging in omeka-s
       - ./files/omeka-s/var/www/html/config/local.config.php:/var/www/html/config/local.config.php
       # Max children setting in PHP-FPM
-      - ./files/php-fpm/usr/local/etc/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./files/omeka-s/usr/local/etc/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf
     environment:
       - OMEKA_DB_CONNECTION_URL
   mariadb:
