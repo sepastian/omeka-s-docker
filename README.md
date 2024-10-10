@@ -23,11 +23,8 @@ Running the Omeka S Docker image requires:
 git clone git@github.com:sepastian/omeka-s-docker.git
 cd omeka-s-docker/
 
-# Copy the sample .env.sample file to .env.
-cp .env.sample .env
-
-# Set MARIADB_ROOT_PASSWORD and MARIADB_PASSWORD in .env;
-# leave other values untouched.
+# Create an .env file from .env.sample,
+# setting random values for MARIADB_ROOT_PASSWORD and MARIADB_PASSWORD.
 sed \
   -e "s|<mariadb_password>|$(tr -dc A-Za-z0-9 </dev/urandom | head -c 12)|" \
   -e "s|<mariadb_root_password>|$(tr -dc A-Za-z0-9 </dev/urandom | head -c 12)|" \
