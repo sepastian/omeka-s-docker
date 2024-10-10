@@ -100,7 +100,7 @@ docker exec -i omeka-s-docker-hamm-mariadb-1 \
 # Copy backup data into docker volume
 for d in files themes modules
 do
-  docker compose cp backup/"${d}" omeka-s:/var/www/html
+  docker compose cp "${d}" omeka-s:/var/www/html
 done
 
 # Update ownership of /var/www/html
