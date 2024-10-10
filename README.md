@@ -95,7 +95,7 @@ docker compose up -d
 # obtain MariaDB root password from .env
 docker exec -i omeka-s-docker-hamm-mariadb-1 \
   sh -c 'exec mariadb -uroot -p"<secret>"' \
-  < backup/mariadb_dump.sql
+  < mariadb_dump.sql
 
 # Copy backup data into docker volume
 for d in files themes modules
