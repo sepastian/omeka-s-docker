@@ -8,38 +8,28 @@ Ready-to-run docker compose file bundling Omeka S, Maria DB and Nginx.
 
 Install either Docker Engine (Linux only) or Docker Desktop (all platforms).
 
-## Usage
-
-Running the Omeka S Docker image requires:
-
-  * clone this repository or download the `compose.yml` file,
-  * set pull or build the Omeka S docker image,
-  * configure database credentials
-  * start containers
+## Quick Start
 
 ```shell
-# Clone this repository,
-# change directory.
+# Clone this repo
 git clone git@github.com:sepastian/omeka-s-docker.git
+
+# Change directory
 cd omeka-s-docker/
 
-# Create an .env file from .env.sample,
-# setting random values for MARIADB_ROOT_PASSWORD and MARIADB_PASSWORD.
+# Generate MariaDB passwords *)
 sed \
   -e "s|<mariadb_password>|$(tr -dc A-Za-z0-9 </dev/urandom | head -c 12)|" \
   -e "s|<mariadb_root_password>|$(tr -dc A-Za-z0-9 </dev/urandom | head -c 12)|" \
   .env.sample > .env
 
-# Either pull the Omeka S image from GHCR...
-docker compose pull
-# ... or, build the Omeka S docker image locally.
-docker compose build
-
-# Start containers.
+# Launch
 docker compose up
 ```
 
 Navigate to http://localhost:8080 to setup Omeka S and finish the installation.
+
+_*) If you prefer, create the `.env` file manually, see `.env.sample` for an example. Passwords are required during backup and restore._
 
 # 🐋 Docker
 
