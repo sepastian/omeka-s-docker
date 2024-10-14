@@ -1,5 +1,9 @@
 FROM php:8-fpm-alpine
 
+LABEL org.opencontainers.image.source=https://github.com/sepastian/omeka-s-docker
+LABEL org.opencontainers.image.description Omeka S Docker image
+LABEL org.opencontainers.image.authors="sebastian.gassner@gmail.com"
+
 ENV OMEKA_VERSION=4.0.4
 
 WORKDIR /var/www/html
