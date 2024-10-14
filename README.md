@@ -67,7 +67,7 @@ cd backup/
 
 # Dump the database to a file;
 # obtain the MariaDB root password from the .env file 
-docker compose exec mariadb mariadb-dump --all-databases -uroot -p"7VDNpz4HusJO" > mariadb_dump.sql
+docker compose exec mariadb mariadb-dump --all-databases -uroot -p"<secret>" > mariadb_dump.sql
 
 # Copy required data
 for d in files modules themes
