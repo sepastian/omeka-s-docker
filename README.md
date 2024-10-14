@@ -70,7 +70,7 @@ cd backup/
 docker compose exec mariadb mariadb-dump --all-databases -uroot -p"<secret>" > mariadb_dump.sql
 
 # Copy required data
-for d in files modules themes asset
+for d in files modules themes
 do
   docker compose cp omeka-s:/var/www/html/"${d}" .
 done
