@@ -7,6 +7,12 @@ For example, `4.1.1b` refers to a change in this repository, the Omeka S version
 
 ## Unreleased
 
+## 4.0.4 - 2024-10-14
+
+### Changed
+
+* Adding and tagging previous version 4.0.4 of Omeka S
+
 ## 4.1.1b - 2024-10-09
 
 ### Changed

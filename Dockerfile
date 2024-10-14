@@ -1,6 +1,6 @@
 FROM php:8-fpm-alpine
 
-ENV OMEKA_VERSION=4.1.1
+ENV OMEKA_VERSION=4.0.4
 
 WORKDIR /var/www/html
 RUN apk add --update-cache --virtual build-dependencies \
