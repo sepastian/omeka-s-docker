@@ -10,6 +10,8 @@ Install either Docker Engine (Linux only) or Docker Desktop (all platforms).
 
 ## Quick Start
 
+Note: environment variables defined in `.env` will be detected automatically by `docker compose`.
+
 ```shell
 # Clone this repo
 git clone git@github.com:sepastian/omeka-s-docker.git
@@ -87,14 +89,13 @@ To restore the backup created above:
 ```shell
 cd omeka-s-docker/backup/
 
-
 # (Re)create containers
 docker compose up -d
 
 # Restore database backup;
 # obtain MariaDB root password from .env
-docker exec -i omeka-s-docker-hamm-mariadb-1 \
-  sh -c 'exec mariadb -uroot -p"<secret>"' \
+docker exec -i omeka-s-docker-mariadb-1 \
+  sh -c 'exec mariadb -uroot -p"${MARIADB_ROOT_PASSWORD}"' \
   < mariadb_dump.sql
 
 # Copy backup data into docker volume
@@ -134,7 +135,7 @@ docker volumes ls
 
 # Delete container containing data
 # (Your volume may have a slightly different name.)
-docker volume rm omeka-s-docker-hamm_www_dir
+docker volume rm omeka-s-docker_www_dir
 ```
 
 Now restore the backup as described above, see [Restore](#restore).
