@@ -30,5 +30,10 @@ services:
       - MARIADB_HOST
       - MARIADB_ROOT_PASSWORD
       - MARIADB_PASSWORD
+    volumes:
+      - mariadb_dir:/var/lib/mysql
+      #- ./files/mariadb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
 volumes:
   www_dir:
+  mariadb_dir:
+  
