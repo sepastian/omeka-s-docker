@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source=https://github.com/sepastian/omeka-s-docke
 LABEL org.opencontainers.image.description Omeka S Docker image
 LABEL org.opencontainers.image.authors="sebastian.gassner@gmail.com"
 
-ENV OMEKA_VERSION=4.0.4
+ENV OMEKA_VERSION=4.1.1
 
 WORKDIR /var/www/html
 RUN apk add --update-cache --virtual build-dependencies \
