@@ -21,6 +21,9 @@ services:
       - ./files/omeka-s/usr/local/etc/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf
     environment:
       - OMEKA_DB_CONNECTION_URL
+    depends_on:
+      - mariadb
+      - nginx
   mariadb:
     hostname: mariadb
     image: mariadb:lts
@@ -32,8 +35,6 @@ services:
       - MARIADB_PASSWORD
     volumes:
       - mariadb_dir:/var/lib/mysql
-      #- ./files/mariadb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
 volumes:
   www_dir:
   mariadb_dir:
-  
