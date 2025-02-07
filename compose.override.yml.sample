@@ -5,3 +5,11 @@ services:
       - "traefik.http.routers.omeka.tls.certresolver=le"
       - "traefik.http.routers.omeka.entrypoints=web,websecure"
       - "traefik.port=80"
+  omeka-s:
+    volumes:
+      - ./modules:/var/www/html/modules
+      # Mount themes as separate subfolder, to keep default theme in ./themes.
+      # Download from omeka.org and extract into ./themes
+      - ./themes/cozy:/var/www/html/themes/cozy
+      - ./themes/foundation:/var/www/html/themes/foundation
+      - ./themes/centerrow:/var/www/html/themes/centerrow
