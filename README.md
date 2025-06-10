@@ -4,6 +4,10 @@ Docker image for Omeka S.
 
 Ready-to-run docker compose file bundling Omeka S, Maria DB and Nginx.
 
+_Note: the version numbers of omeka-s-docker are following the upstream version numbers of Omeka S._
+_Changes internal to this repository only are denoted by tags with lowercase letters appended to the Omeka S version number._
+_For example, both 4.1.1.a and 4.1.1b refer to changes in this repository; both tags reference the same 4.1.1 release of Omeka S._
+
 ## Prerequisites
 
 Install either Docker Engine (Linux only) or Docker Desktop (all platforms).
