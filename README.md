@@ -91,6 +91,9 @@ do
 done
 ```
 
+For convenience, a `backup.sh` script is included.
+The script loads the variables defined in `.env` and creates a backup in a separate folder, named after the current date and time, under `backup/`.
+
 ### Restore
 
 The `backup/` folder now contains a complete backup.
