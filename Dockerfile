@@ -1,10 +1,10 @@
-FROM php:8.2-fpm-alpine
+FROM php:8.4-fpm-alpine
 
 LABEL org.opencontainers.image.source=https://github.com/sepastian/omeka-s-docker
 LABEL org.opencontainers.image.description Omeka S Docker image
 LABEL org.opencontainers.image.authors="sebastian.gassner@gmail.com"
 
-ENV OMEKA_VERSION=4.2.0
+ENV OMEKA_VERSION=4.2.1
 
 WORKDIR /var/www/html
 RUN apk add --update-cache --virtual build-dependencies \

@@ -7,6 +7,13 @@ For example, `4.1.1b` refers to a change in this repository, the Omeka S version
 
 ## Unreleased
 
+## 4.2.1 - 2026-10-23
+
+### Changed
+
+* Updating to Omeka S v4.2.1
+* Updating PHP to v8.4.27 in response to CVE-2026-109618 and CVE-2026-109619.
+
 ## 4.0.4 - 2024-10-14
 
 ### Changed
