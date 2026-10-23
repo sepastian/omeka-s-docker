@@ -1,3 +1,7 @@
+> [!WARNING]
+> 2026-10-23: Please update your Docker images to [version 4.2.1](https://github.com/sepastian/omeka-s-docker/pkgs/container/omeka-s-docker/1434066130?tag=4.2.1),
+> which updates PHP to version 8.4.27, in response to [CVE-2026-109618](https://app.opencve.io/cve/CVE-2026-109618) and [CVE-2026-109619](https://app.opencve.io/cve/CVE-2026-109619).
+ 
 # Omeka S 🏢 ✕ 🐳 Docker
 
 Docker image for Omeka S.
