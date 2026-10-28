@@ -7,11 +7,20 @@ For example, `4.1.1b` refers to a change in this repository, the Omeka S version
 
 ## Unreleased
 
+(empty)
+
 ## 4.2.1b - 2026-10-28
+
+### Changed
 
 * Fixing startup issue caused by php-fpm config
 * Updating to php 8.5, which is supported since Omeka-S 4.2.1
 * Updating documentation
+
+The config files for Omeka-S and php-fpm are now baked into the image.
+Thus, it is no longer required to mount the config files in `compose.yml`,
+the corresponding volumes have been removed. If you still need to change 
+configuration settings, mount the files, see `config.override.yml.sample`.
 
 ## 4.2.1 - 2026-10-23
 
