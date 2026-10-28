@@ -37,3 +37,8 @@ RUN rm config/database.ini
 RUN mkdir -p /var/www/html/files \
     && chown -R www-data:www-data /var/www/html
 USER www-data
+
+# Copy PHP-FPM configuration files into Omeka-S image,
+# so configuration must no longer be provided in compose.yml.
+COPY /files/omeka-s/var/www/html/config/local.config.php /var/www/html/config/local.config.php
+COPY /files/omeka-s/usr/local/etc/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
