@@ -8,23 +8,6 @@ Docker image for Omeka S.
 
 Ready-to-run docker compose file bundling Omeka S, Maria DB and Nginx.
 
-## Versioning
-
-The version numbers of `omeka-s-docker` are following the upstream version numbers of Omeka S.
-Sometimes several tags containing internal changes to `omeka-s-docker` exist, for the same version of Omeka S.
-These internal changes are denoted by tags with lowercase letters appended to the Omeka S version number.
-For example, both `4.1.1.a` and `4.1.1b` are referencing the same 4.1.1 release of Omeka S.
-
-To use a specific version of Omeka S, select the corresponding tag;
-if several tags for the same version of Omeka S exist, use the one with the highest letter appended.
-
-This repository contains Omeka S versions from 4.1.0 onwards.
-If you need support for a specific version of Omeka S, submit a PR or create an issue.
-
-## Prerequisites
-
-Install either Docker Engine (Linux only) or Docker Desktop (all platforms).
-
 ## Quick Start
 
 Note: environment variables defined in `.env` will be detected automatically by `docker compose`.
@@ -50,9 +33,24 @@ Navigate to http://localhost:8080 to setup Omeka S and finish the installation.
 
 _*) If you prefer, create the `.env` file manually, see `.env.sample` for an example. Passwords are required during backup and restore._
 
-# 🐳 Docker
+## Versioning
 
-## Overrides
+The version numbers of `omeka-s-docker` are following the upstream version numbers of Omeka S.
+Sometimes several tags containing internal changes to `omeka-s-docker` exist, for the same version of Omeka S.
+These internal changes are denoted by tags with lowercase letters appended to the Omeka S version number.
+For example, both `4.1.1.a` and `4.1.1b` are referencing the same 4.1.1 release of Omeka S.
+
+To use a specific version of Omeka S, select the corresponding tag;
+if several tags for the same version of Omeka S exist, use the one with the highest letter appended.
+
+This repository contains Omeka S versions from 4.1.0 onwards.
+If you need support for a specific version of Omeka S, submit a PR or create an issue.
+
+## Prerequisites
+
+Install either Docker Engine (Linux only) or Docker Desktop (all platforms).
+
+## Docker Compose Overrides
 
 If present during `docker compose up`, a compose override file names `compose.override.yml` will be merged with `compose.yml`.
 
@@ -138,7 +136,8 @@ If there is an existing Omeka S installation with (running) containers and volum
 it may interfere with the backup you are trying to restore.
 The following snippet shows how to **completely delete** an existing instance.
 
-<font color="#ff0000">CONTINUE AT YOUR OWN RISK!</font>
+> [!WARNING]
+> CONTINUE AT YOUR OWN RISK!
 
 ```shell
 # WARNING
@@ -159,3 +158,13 @@ docker volume rm omeka-s-docker_www_dir
 ```
 
 Now restore the backup as described above, see [Restore](#restore).
+
+## Advanced Configuration
+
+The Omeka-S container is based on `php-fpm` and fully configured and can be used as-is.
+The configuration baked into the container can be found in `files/omeka-s`.
+See `compose.override.yml.sample` on how to override these files inside the container, by mounting config files as volumes during container startup.
+
+The Nginx container requires additional configuration to serve the Omeka-S application correctly.
+Since the Nginx container is used as-is, the adapted configuration must be mounted during container startup, see `compose.yml`.
+The current configuration for Nginx can be found in `files/nginx`.
