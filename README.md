@@ -134,12 +134,13 @@ docker compose exec --user root omeka-s chown -R www-data:www-data /var/www/html
 
 ### Purge
 
+> [!WARNING]
+> CONTINUE AT YOUR OWN RISK!
+> This will reset your database, all data will be deleted.
+
 If there is an existing Omeka S installation with (running) containers and volumes,
 it may interfere with the backup you are trying to restore.
 The following snippet shows how to **completely delete** an existing instance.
-
-> [!WARNING]
-> CONTINUE AT YOUR OWN RISK!
 
 ```shell
 # WARNING
