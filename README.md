@@ -27,6 +27,8 @@ sed \
 
 # Launch
 docker compose up
+
+# Browse to http://localhost:8080 to install Omeka-S
 ```
 
 Navigate to http://localhost:8080 to setup Omeka S and finish the installation.
