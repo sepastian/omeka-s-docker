@@ -2,7 +2,7 @@ FROM php:8.4-fpm-alpine
 
 LABEL org.opencontainers.image.source=https://github.com/sepastian/omeka-s-docker
 LABEL org.opencontainers.image.description Omeka S Docker image
-LABEL org.opencontainers.image.authors="sebastian.gassner@gmail.com"
+LABEL org.opencontainers.image.authors="sebastian.gassner@pm.me"
 
 ENV OMEKA_VERSION=4.2.1
 
