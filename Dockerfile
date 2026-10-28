@@ -1,4 +1,4 @@
-FROM php:8.4-fpm-alpine
+FROM php:8.5-fpm-alpine
 
 LABEL org.opencontainers.image.source=https://github.com/sepastian/omeka-s-docker
 LABEL org.opencontainers.image.description Omeka S Docker image
